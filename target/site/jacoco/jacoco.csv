@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+solid,ie.gmit.open,CallHistory,48,0,4,0,11,0,6,0,4,0
+solid,ie.gmit.open,PhoneSubscriber,26,0,0,0,5,0,2,0,2,0
+solid,ie.gmit.open,InternetSessionHistory.InternetSession,23,0,0,0,8,0,4,0,4,0
+solid,ie.gmit.open,ISPSubscriber,41,0,0,0,10,0,4,0,4,0
+solid,ie.gmit.open,CallHistory.Call,21,0,0,0,8,0,4,0,4,0
+solid,ie.gmit.open,Subsriber,31,0,0,0,14,0,9,0,9,0
+solid,ie.gmit.open,InternetSessionHistory,48,0,4,0,11,0,6,0,4,0
+solid,ie.gmit.single,User,37,21,0,0,7,10,3,6,3,6
+solid,ie.gmit.single,UserController,0,34,0,2,0,9,0,3,0,2
+solid,ie.gmit.single,Store,11,22,0,0,2,6,1,3,1,3
+solid,ie.gmit.single,UserValidation,8,84,7,9,3,18,7,6,0,5

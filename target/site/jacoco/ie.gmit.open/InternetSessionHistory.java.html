@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InternetSessionHistory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">solid</a> &gt; <a href="index.source.html" class="el_package">ie.gmit.open</a> &gt; <span class="el_source">InternetSessionHistory.java</span></div><h1>InternetSessionHistory.java</h1><pre class="source lang-java linenums">package ie.gmit.open;
+
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+<span class="nc" id="L10">public class InternetSessionHistory {</span>
+
+    public static class InternetSession {
+        
+        private LocalDateTime begin;
+
+        private Long subscriberId;
+
+        private Long dataUsed;
+        
+<span class="nc" id="L20">        public InternetSession(Long subscriberId, LocalDateTime begin, long dataUsed) {</span>
+<span class="nc" id="L21">            this.begin = begin;</span>
+<span class="nc" id="L22">            this.dataUsed = dataUsed;</span>
+<span class="nc" id="L23">            this.subscriberId = subscriberId;</span>
+<span class="nc" id="L24">        }</span>
+
+        /**
+         * @return the begin
+         */
+        public LocalDateTime getBegin() {
+<span class="nc" id="L30">            return begin;</span>
+        }
+
+        /**
+         * @return the data used
+         */
+        public long getDataUsed() {
+<span class="nc" id="L37">            return dataUsed;</span>
+        }
+
+        /**
+         * @return the subscriber
+         */
+        public Long getSubscriberId() {
+<span class="nc" id="L44">            return subscriberId;</span>
+        }
+
+    }
+<span class="nc" id="L48">    private static final Map&lt;Long, List&lt;InternetSession&gt;&gt; SESSIONS = new HashMap&lt;&gt;();</span>
+
+    public synchronized static List&lt;InternetSession&gt; getCurrentSessions(Long subscriberId) {
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if(!SESSIONS.containsKey(subscriberId)) {</span>
+<span class="nc" id="L52">            return Collections.emptyList();</span>
+        }
+<span class="nc" id="L54">        return SESSIONS.get(subscriberId);</span>
+    }
+
+    public synchronized static void addSession(Long subscriberId, LocalDateTime begin, long dataUsed) {
+        List&lt;InternetSession&gt; sessions;
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        if(!SESSIONS.containsKey(subscriberId)) {</span>
+<span class="nc" id="L60">            sessions = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L61">            SESSIONS.put(subscriberId, sessions);</span>
+        } else {
+<span class="nc" id="L63">            sessions = SESSIONS.get(subscriberId);</span>
+        }
+<span class="nc" id="L65">        sessions.add(new InternetSession(subscriberId, begin, dataUsed));</span>
+<span class="nc" id="L66">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
